@@ -30,13 +30,13 @@ class StockReading(models.Model):
         blank=False,
         null=False,
         db_index=True,
-        help_text="EAN13"
+        help_text="13 digit code"
     )
     expiry_date = models.DateField(
         blank=False,
         null=False,
         db_index=True,
-        help_text="Expiry date"
+        help_text="Expiry date of your reference"
     )
     created_on = models.DateTimeField(
         auto_now_add=True,

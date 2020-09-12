@@ -18,11 +18,13 @@ from django.urls import path
 
 from stockreading.views import (
     CurrentListingView,
-    HistoricListingView
+    HistoricListingView,
+    StockReadingCreateView,
 )
 
 urlpatterns = [
     path('', CurrentListingView.as_view(), name='current-listing'),
     path('historic/', HistoricListingView.as_view(), name='historic-listing'),
+    path('create/', StockReadingCreateView.as_view(success_url="?success=1"), name='create-reading'),
     path('admin/', admin.site.urls),
 ]

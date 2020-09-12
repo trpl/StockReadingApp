@@ -1,6 +1,17 @@
 from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView
 
 from .models import StockReading
+
+class StockReadingCreateView(CreateView):
+    model = StockReading
+    fields = ['reference_id', 'expiry_date']
+    template_name = 'create_reading.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(StockReadingCreateView, self).get_context_data(**kwargs)
+        context['success'] = self.request.GET.get('success')
+        return context
 
 class StockReadingListingView(ListView):
     model = StockReading

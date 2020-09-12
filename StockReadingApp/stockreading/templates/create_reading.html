@@ -1,0 +1,28 @@
+{% load static %}
+<html>
+    <head>
+         <title>Stock Reading App</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        <div class="title-block">
+            <h1>
+                Add new stock readings
+            </h1>
+        </div>
+        <div class="back-button">
+            <a href="/"><button>Back to current list</button></a>
+        </div>
+        {% if success %}
+        <div class=success>Reading created with success</div>
+        {% endif %}
+        <div class="reading-form">
+            <form method="post">{% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Save">
+            </form>
+        </div>
+    </body>
+</html>
