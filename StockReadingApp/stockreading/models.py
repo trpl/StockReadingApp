@@ -36,7 +36,7 @@ class StockReading(models.Model):
         blank=False,
         null=False,
         db_index=True,
-        help_text="Expiry date of your reference"
+        help_text="Expiry date of your reference (YYYY-MM-DD)"
     )
     created_on = models.DateTimeField(
         auto_now_add=True,
