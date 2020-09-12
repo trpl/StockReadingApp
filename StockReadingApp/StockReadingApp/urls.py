@@ -16,6 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from stockreading.views import (
+    CurrentListingView,
+    HistoricListingView
+)
+
 urlpatterns = [
+    path('', CurrentListingView.as_view(), name='current-listing'),
+    path('historic/', HistoricListingView.as_view(), name='historic-listing'),
     path('admin/', admin.site.urls),
 ]

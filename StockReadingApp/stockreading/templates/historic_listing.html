@@ -1,0 +1,60 @@
+{% load static %}
+<html>
+    <head>
+         <title>Stock Reading App</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        <div class="title-block">
+            <h1>
+                Historic stock readings
+                {% if reference_id %} for reference {{reference_id}}{% endif %}
+            </h1>
+        </div>
+        <div class="back-button">
+            <a href="/"><button>Back to current listing</button></a>
+        </div>
+        <div class="table-block">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Reference ID</th>
+                        <th>Expiry date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for reading in object_list %}
+                    <tr>
+                        <td>{{reading.reference_id}}</td>
+                        <td>{{reading.expiry_date|date}}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="2">No readings to display.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </body>
+</html>
