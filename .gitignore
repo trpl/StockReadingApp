@@ -8,3 +8,4 @@ pip/
 dump.rdb
 /fabfile.py
 .vscode
+staticfiles
