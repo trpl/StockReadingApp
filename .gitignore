@@ -1,0 +1,10 @@
+env
+*.py[co]
+pip/
+*~
+\#*#
+.venv
+.no-pull
+dump.rdb
+/fabfile.py
+.vscode
