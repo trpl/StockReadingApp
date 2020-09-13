@@ -10,6 +10,7 @@ class StockReadingSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = StockReading
         fields = ["id", 'reference_id', 'expiry_date', 'created_on']
+        read_only_fields = ("id", "created_on")
 
 
 class StockReadingViewSet(mixins.CreateModelMixin,
