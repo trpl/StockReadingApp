@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 
 from stockreading.views import (
     CurrentListingView,
@@ -27,4 +27,5 @@ urlpatterns = [
     path('historic/', HistoricListingView.as_view(), name='historic-listing'),
     path('create/', StockReadingCreateView.as_view(success_url="?success=1"), name='create-reading'),
     path('admin/', admin.site.urls),
+    path('api/', include('stockreading.api.urls')),
 ]
