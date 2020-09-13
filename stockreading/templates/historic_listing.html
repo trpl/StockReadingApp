@@ -6,59 +6,63 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="{% static 'style.css' %}">
     </head>
-    <body class="container">
-        <div class="title-block">
-            <h1>
-                Historic stock readings
-                {% if reference_id %} for reference {{reference_id}}{% endif %}
-            </h1>
-        </div>
+    <body>
         <div class="container">
-            <div class="back-button">
-                <a href="/"><button>Back to current list</button></a>
+            <div class="title-block row">
+                <div class="container">
+                    <h1>
+                        Historic stock readings
+                        {% if reference_id %} # {{reference_id}}{% endif %}
+                    </h1>
+                </div>
             </div>
-            <hr>
-            <div class="table-block container">
-                <table>
-                    <thead>
-                        <tr class="row">
-                            <th class="col-md-6">Reference ID</th>
-                            <th class="col-md-6">Expiry date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for reading in object_list %}
-                        <tr class="row">
-                            <td class="col-md-6">
-                                    {{reading.reference_id}}
-                            </td class="col-md-6">
-                            <td>{{reading.expiry_date|date}}</td>
-                        </tr>
-                    {% empty %}
-                        <tr class="row">
-                            <td colspan=2 class="col-md-12">No readings to display.</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            <hr>
-            <div class="pagination">
-                <span class="step-links">
-                    {% if page_obj.has_previous %}
-                        <a href="?page=1">&laquo; first</a>
-                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-                    {% endif %}
+            <div class="container">
+                <div class="back-button">
+                    <a href="/"><button>Back to current list</button></a>
+                </div>
+                <hr>
+                <div class="table-block container">
+                    <table>
+                        <thead>
+                            <tr class="row">
+                                <th class="col-md-6">Reference ID</th>
+                                <th class="col-md-6">Expiry date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for reading in object_list %}
+                            <tr class="row">
+                                <td class="col-md-6">
+                                        {{reading.reference_id}}
+                                </td class="col-md-6">
+                                <td>{{reading.expiry_date|date}}</td>
+                            </tr>
+                        {% empty %}
+                            <tr class="row">
+                                <td colspan=2 class="col-md-12">No readings to display.</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; first</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        {% endif %}
 
-                    <span class="current">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        <span class="current">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span>
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">next</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
                     </span>
-
-                    {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}">next</a>
-                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                    {% endif %}
-                </span>
+                </div>
             </div>
         </div>
     </body>

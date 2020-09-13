@@ -6,27 +6,31 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="{% static 'style.css' %}">
     </head>
-    <body class="container">
-        <div class="title-block">
-            <h1>
-                Add new stock readings
-            </h1>
-        </div>
+    <body>
         <div class="container">
-            <div class="back-button">
-                <a href="/"><button>Back to current list</button></a>
+            <div class="title-block row">
+                <div class="container">
+                    <h1>
+                        Add new stock readings
+                    </h1>
+                </div>
             </div>
-            <hr>
-            {% if success %}
-            <div class="success">Reading created with success</div>
-            <br>
-            {% endif %}
-            <div class="reading-form container">
-                <form method="post">{% csrf_token %}
-                    {{ form.as_p }}
-                    <hr>
-                    <input type="submit" value="Save" class="save">
-                </form>
+            <div class="container">
+                <div class="back-button">
+                    <a href="/"><button>Back to current list</button></a>
+                </div>
+                <hr>
+                {% if success %}
+                <div class="success">Reading created with success</div>
+                <br>
+                {% endif %}
+                <div class="reading-form container">
+                    <form method="post">{% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" value="Save" class="save">
+                    </form>
+                </div>
+                <hr>
             </div>
         </div>
     </body>

@@ -1,10 +1,20 @@
 .errorlist {
-  color: red;
+	color: red;
 
 }
 .back-button {
-  color: blue;
+ 	color: blue;
 }
 .save {
-  color: green;
+ 	color: darkgreen;
+ 	float: right;
+}
+.new-button {
+ 	color: darkgreen;
+ 	float: right;
+}
+.tilte-block {
+	color: darkred;
+	background-color: lightgrey;
+	text-align: center;
 }
